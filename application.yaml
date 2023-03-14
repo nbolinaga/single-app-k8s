@@ -11,7 +11,7 @@
       "namespace": "default"
     },
     "source": {
-      "repoURL": "GitHub - nbolinaga/single-app-k8s",
+      "repoURL": "https://github.com/nbolinaga/single-app-k8s.git",
       "path": ".",
       "targetRevision": "HEAD"
     },
