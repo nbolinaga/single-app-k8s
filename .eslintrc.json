@@ -1,3 +1,39 @@
 {
-  "extends": "next/core-web-vitals"
+  "apiVersion": "argoproj.io/v1alpha1",
+  "kind": "Application",
+  "metadata": {
+    "name": "web",
+    "namespace": "default"
+  },
+  "spec": {
+    "destination": {
+      "server": "https://kubernetes.default.svc",
+      "namespace": "default"
+    },
+    "source": {
+      "repoURL": "https://github.com/nbolinaga/single-app-k8s.git",
+      "path": ".",
+      "targetRevision": "HEAD"
+    },
+    "project": "default",
+    "syncPolicy": {
+      "automated": {
+        "prune": true,
+        "selfHeal": true
+      }
+    },
+    "plugin": {
+      "name": "kustomize",
+      "env": {
+        "BUILD_PATH": "./k8s"
+      }
+    },
+    "configManagementPlugins": [
+      {
+        "name": "kustomize"
+      }
+    ]
+  }
 }
+
+
